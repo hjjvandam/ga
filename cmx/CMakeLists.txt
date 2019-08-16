@@ -36,15 +36,26 @@ cmake_minimum_required (VERSION 2.8.8)
 project (CMX)
 
 option (CMX_RUNTIME, "Protocols using to build CMX" MPI_RMA)
-option (MPI_RMA "use MPI RMA protocols for communication" ON)
+option (CMX_MPI_RMA, "use MPI RMA protocols for communication" OFF)
+option (CMX_MPI_PR, "use MPI PR protocols for communication" OFF)
 include_directories(BEFORE ${CMAKE_CURRENT_SOURCE_DIR} src-common src-armci)
-if (MPI_RMA)
+if (CMX_RUNTIME STREQUAL "MPI_RMA")
+  message(STATUS,"Setting RMA runtime")
   set(CMX_DEVICE
     src-mpi-rma/cmx.c
     src-mpi-rma/groups.c
   )
-  set (CMX_NETWORK_MPI_RMA ON)
+  set (CMX_MPI_RMA ON)
   include_directories(AFTER src-mpi-rma)
+elseif (CMX_RUNTIME STREQUAL "MPI_PR")
+  message(STATUS,"Setting PR runtime")
+  set(CMX_DEVICE
+    src-mpi-pr/cmx.c
+    src-mpi-pr/groups.c
+    src-mpi-pr/reg_cache.c
+  )
+  set (CMX_MPI_PR ON)
+  include_directories(AFTER src-mpi-pr)
 endif()
 
 set(ARMCI_API
@@ -452,6 +463,12 @@ target_link_libraries(perf_strided.x cmx)
 
 add_executable(shift.x testing/shift.c)
 target_link_libraries(shift.x cmx)
+
+add_executable(group_test.x testing/group_test.c)
+target_link_libraries(group_test.x cmx)
+
+add_executable(armci_group_test.x testing/armci_group_test.c)
+target_link_libraries(armci_group_test.x cmx armci)
 
 # -------------------------------------------------------------
 # ARMCI test programs
