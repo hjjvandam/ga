@@ -269,3 +269,10 @@ void tcg_waitcom(long node)
 
     WAITCOM_(&anode);
 }
+
+void tcg_setcom(long comm)
+{
+    long acomm = comm;
+
+    TCGSETCOM_(&acomm);
+}

@@ -359,6 +359,12 @@ int PARMCI_Init_args(int *argc, char ***argv)
 }
 
 
+int PARMCI_Set_comm(ARMCI_Group comm)
+{
+    return comex_set_comm(comm);
+}
+
+
 int PARMCI_Initialized()
 {
     return comex_initialized();

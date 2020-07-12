@@ -109,7 +109,7 @@ void make_tcgmsg_comm()
         }
         else
         {
-            TCGMSG_Comm = MPI_COMM_WORLD;
+            //TCGMSG_Comm = MPI_COMM_WORLD;
         }
     }
 }
@@ -247,3 +247,12 @@ void STATS_()
 {
     printf("STATS not implemented\n");
 } 
+
+void TCGSETCOM_(long *comm)
+{
+    int init=0;
+    MPI_Initialized(&init);
+    if (init && ! _tcg_initialized) {
+        TCGMSG_Comm = *comm
+    }
+}

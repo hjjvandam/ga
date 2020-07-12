@@ -436,6 +436,11 @@ logical FATR nga_has_ghosts_(Integer *g_a)
   return wnga_has_ghosts(*g_a);
 }
 
+void FATR ga_set_comm(Integer *comm)
+{
+  wnga_set_comm(*comm);
+}
+
 void FATR ga_initialize_()
 {
   _ga_initialize_f=1;

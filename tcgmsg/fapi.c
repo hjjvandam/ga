@@ -45,6 +45,7 @@
 #define _TCGREADY_   F77_FUNC(tcgready, TCGREADY)
 #define _TCGTIME_    F77_FUNC(tcgtime, TCGTIME)
 #define _WAITCOM_    F77_FUNC(waitcom, WAITCOM)
+#define _TCGSETCOM_  F77_FUNC(tcgsetcom, TCGSETCOM)
 
 
 void FATR _BRDCST_(Integer *type, void *buf, Integer *lenbuf, Integer *originator)
@@ -318,5 +319,12 @@ void FATR _WAITCOM_(Integer *node)
     long anode = *node;
 
     WAITCOM_(&anode);
+}
+
+void FATR _TCGSETCOM_(Integer *comm)
+{
+    long acomm = *comm;
+
+    TCGSETCOM_(&acomm);
 }
 

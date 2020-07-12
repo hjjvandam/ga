@@ -40,6 +40,7 @@ extern void   tcg_stats();
 extern void   tcg_synch(long type);
 extern double tcg_time();
 extern void   tcg_waitcom(long node);
+extern void   tcg_setcom(long comm);
 
 #ifdef __cplusplus
 }

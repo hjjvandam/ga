@@ -677,6 +677,14 @@ extern int comex_wait_all(comex_group_t group);
  */
 extern int comex_wait_proc(int proc, comex_group_t group);
 
+/**
+ * Set communicator from an external provider.
+ *
+ * @param[in] comm the externally provided communicator
+ * @return COMEX_SUCCESS on sucess
+ */
+extern int comex_set_comm(MPI_Comm comm);
+
 #if defined(__cplusplus) || defined(c_plusplus)
 }
 #endif

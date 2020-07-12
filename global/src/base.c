@@ -343,6 +343,14 @@ extern int _ga_initialize_args;
 extern int _ga_initialize_c;
 extern int _ga_initialize_f;
 
+#if HAVE_SYS_WEAK_ALIAS_PRAGMA
+#   pragma weak wnga_set_comm = pnga_set_comm
+#endif
+void pnga_set_comm(int comm)
+{
+    ARMCI_Set_comm(comm);
+}
+
 /**
  *  Initialize library structures in Global Arrays.
  *  either ga_initialize_ltd or ga_initialize must be the first 

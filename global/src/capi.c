@@ -82,6 +82,10 @@ return 0;
 #endif
 }
 
+void GA_Set_comm(int comm)
+{
+   wnga_set_comm(comm);
+}
 
 void GA_Initialize_ltd(size_t limit)
 {

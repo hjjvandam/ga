@@ -24,6 +24,7 @@
 #include "comex_impl.h"
 #include "groups.h"
 
+MPI_Comm comex_comm = MPI_COMM_WORLD;
 
 /* world group state */
 comex_group_world_t g_state = {
@@ -381,8 +382,8 @@ void comex_group_init()
     
     /* populate g_state */
 
-    /* dup MPI_COMM_WORLD and get group, rank, and size */
-    status = MPI_Comm_dup(MPI_COMM_WORLD, &(g_state.comm));
+    /* dup comex_comm and get group, rank, and size */
+    status = MPI_Comm_dup(comex_comm, &(g_state.comm));
     COMEX_ASSERT(MPI_SUCCESS == status);
     status = MPI_Comm_group(g_state.comm, &(g_state.group));
     COMEX_ASSERT(MPI_SUCCESS == status);
@@ -479,7 +480,7 @@ void comex_group_init()
         }
     }
     free(sorted);
-    status = MPI_Comm_split(MPI_COMM_WORLD, count,
+    status = MPI_Comm_split(comex_comm, count,
             g_state.rank, &(g_state.node_comm));
     COMEX_ASSERT(MPI_SUCCESS == status);
     /* node rank */

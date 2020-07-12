@@ -308,6 +308,7 @@ STATIC int _set_affinity(int cpu);
 STATIC void translate_mpi_error(int ierr, const char* location);
 STATIC void strided_to_subarray_dtype(int *stride_array, int *count, int levels, MPI_Datatype base_type, MPI_Datatype *type);
 
+extern MPI_Comm comex_comm;
 
 int comex_init()
 {
@@ -589,6 +590,20 @@ int comex_initialized()
 #endif
 
     return initialized;
+}
+
+int comex_set_comm(MPI_Comm comm)
+{
+    int init_flag;
+    int status;
+    
+    status = MPI_Initialized(&init_flag);
+    CHECK_MPI_RETVAL(status);
+    
+    if(init_flag && ! comex_initialized()) {
+       comex_comm = comm;
+    }
+    return COMEX_SUCCESS;
 }
 
 
