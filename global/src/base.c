@@ -346,7 +346,7 @@ extern int _ga_initialize_f;
 #if HAVE_SYS_WEAK_ALIAS_PRAGMA
 #   pragma weak wnga_set_comm = pnga_set_comm
 #endif
-void pnga_set_comm(int comm)
+void pnga_set_comm(MPI_Comm comm)
 {
     ARMCI_Set_comm(comm);
 }

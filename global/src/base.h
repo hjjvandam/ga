@@ -1,4 +1,5 @@
 /*$Id: base.h,v 1.40.2.4 2007/12/18 18:41:27 d3g293 Exp $ */
+#include "mpi.h"
 #include "armci.h"
 #include "gaconfig.h"
 #include "typesf2c.h"

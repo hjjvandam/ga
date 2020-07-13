@@ -9,6 +9,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <mpi.h>
 
 #include "farg.h"
 #include "typesf2c.h"
@@ -321,10 +322,9 @@ void FATR _WAITCOM_(Integer *node)
     WAITCOM_(&anode);
 }
 
-void FATR _TCGSETCOM_(Integer *comm)
-{
-    long acomm = *comm;
 
-    TCGSETCOM_(&acomm);
+void FATR _TCGSETCOM_(MPI_Fint *comm)
+{
+    TCGSETCOM_(MPI_Comm_f2c(*comm));
 }
 

@@ -82,7 +82,7 @@ return 0;
 #endif
 }
 
-void GA_Set_comm(int comm)
+void GA_Set_comm(MPI_Comm comm)
 {
    wnga_set_comm(comm);
 }

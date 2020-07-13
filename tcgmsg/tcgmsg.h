@@ -3,6 +3,7 @@
  */
 #ifndef TCGMSG_H_
 #define TCGMSG_H_
+#include "mpi.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -40,7 +41,7 @@ extern void   tcg_stats();
 extern void   tcg_synch(long type);
 extern double tcg_time();
 extern void   tcg_waitcom(long node);
-extern void   tcg_setcom(long comm);
+extern void   tcg_setcom(MPI_Comm comm);
 
 #ifdef __cplusplus
 }

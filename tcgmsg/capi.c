@@ -8,6 +8,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <mpi.h>
 
 #include "sndrcv.h"
 
@@ -270,9 +271,8 @@ void tcg_waitcom(long node)
     WAITCOM_(&anode);
 }
 
-void tcg_setcom(long comm)
-{
-    long acomm = comm;
 
-    TCGSETCOM_(&acomm);
+void tcg_setcom(MPI_Comm comm)
+{
+    TCGSETCOM_(comm);
 }

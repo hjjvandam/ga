@@ -436,9 +436,9 @@ logical FATR nga_has_ghosts_(Integer *g_a)
   return wnga_has_ghosts(*g_a);
 }
 
-void FATR ga_set_comm(Integer *comm)
+void FATR ga_set_comm_(MPI_Fint *comm)
 {
-  wnga_set_comm(*comm);
+  wnga_set_comm(MPI_Comm_f2c(*comm));
 }
 
 void FATR ga_initialize_()

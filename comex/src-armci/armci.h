@@ -4,6 +4,7 @@
 
 /* for size_t */
 #include <stdlib.h>
+#include <mpi.h>
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {
@@ -24,7 +25,7 @@ extern int armci_notify_wait(int proc,int *pval);
 extern int ARMCI_Init();    /* initialize ARMCI */
 extern int ARMCI_Init_args(int *argc, char ***argv); /* initialize ARMCI */
 extern int ARMCI_Initialized();
-extern int ARMCI_Set_comm(ARMCI_Group comm);
+extern int ARMCI_Set_comm(MPI_Comm comm);
 extern void ARMCI_Barrier();    /* ARMCI Barrier*/
 
 extern int ARMCI_Put(void *src, void* dst, int bytes, int proc);

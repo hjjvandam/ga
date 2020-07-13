@@ -228,7 +228,6 @@ long MTIME_()
 }
 
 
-
 /**
  * longerface from Fortran to C error routine
  */
@@ -243,16 +242,18 @@ void SETDBG_(long *onoff)
     DEBUG_ = *onoff;
 }
 
+
 void STATS_()
 {
     printf("STATS not implemented\n");
 } 
 
-void TCGSETCOM_(long *comm)
+
+void TCGSETCOM_(MPI_Comm comm)
 {
     int init=0;
     MPI_Initialized(&init);
     if (init && ! _tcg_initialized) {
-        TCGMSG_Comm = *comm
+        TCGMSG_Comm = comm;
     }
 }
